@@ -1093,6 +1093,26 @@ impl HasContext for Context {
         );
     }
 
+    unsafe fn tex_image_2d_multisample(
+        &self,
+        target: u32,
+        samples: i32,
+        internal_format: u32,
+        width: i32,
+        height: i32,
+        fixedsamplelocations: bool,
+    ) {
+        let gl = &self.raw;
+        gl.TexImage2DMultisample(
+            target,
+            samples,
+            internal_format,
+            width,
+            height,
+            fixedsamplelocations as u8,
+        );
+    }
+
     unsafe fn tex_image_3d(
         &self,
         target: u32,

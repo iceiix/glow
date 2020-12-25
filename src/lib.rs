@@ -480,6 +480,16 @@ pub trait HasContext {
         pixels: Option<&[u8]>,
     );
 
+    unsafe fn tex_image_2d_multisample(
+        &self,
+        target: u32,
+        samples: i32,
+        internal_format: u32,
+        width: i32,
+        height: i32,
+        fixedsamplelocations: bool,
+    );
+
     unsafe fn tex_image_3d(
         &self,
         target: u32,
