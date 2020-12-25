@@ -1850,6 +1850,18 @@ impl HasContext for Context {
         }
     }
 
+    unsafe fn tex_image_2d_multisample(
+        &self,
+        _target: u32,
+        _samples: i32,
+        _internal_format: u32,
+        _width: i32,
+        _height: i32,
+        _fixedsamplelocations: bool,
+    ) {
+        panic!("WebGL2 does not support glTexImage2DMultisample - switch to glRenderbufferStorageMultisample");
+    }
+
     unsafe fn tex_image_3d(
         &self,
         target: u32,
