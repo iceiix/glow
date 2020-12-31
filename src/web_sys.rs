@@ -2685,6 +2685,13 @@ impl HasContext for Context {
         }
     }
 
+    unsafe fn vertex_attrib_i_4_ui(&self, index: u32, x: u32, y: u32, z: u32, w: u32) {
+        match self.raw {
+            RawRenderingContext::WebGl1(ref _gl) => panic!("glVertexAttribI4ui not supported"),
+            RawRenderingContext::WebGl2(ref gl) => gl.vertex_attrib_i4ui(index, x, y, z, w),
+        }
+    }
+
     unsafe fn vertex_attrib_1_f32_slice(&self, index: u32, v: &[f32]) {
         match self.raw {
             RawRenderingContext::WebGl1(ref gl) => gl.vertex_attrib1fv_with_f32_array(index, v),
